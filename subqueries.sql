@@ -46,7 +46,7 @@ SELECT * FROM
 -- Show all scores where Pakistan won
 SELECT * FROM testruns
 WHERE match_id
-IN (SELECT id FROM match WHERE winner = 'PAK')
+IN (SELECT id FROM match WHERE winner = 5006)
 
 --Show all LBW dismissals
 SELECT * FROM testruns
@@ -57,7 +57,7 @@ IN (SELECT id FROM wickets WHERE dismissal = 'LBW')
 SELECT * FROM match
 WHERE venue_id 
 	IN (SELECT id FROM venues WHERE name = 'Old Trafford')
-SELECT
+
 -- Total number of runs made by each team throughout
 SELECT teams.name AS country,
 (SELECT SUM(runs) FROM testruns
@@ -84,8 +84,7 @@ ON testruns.match_id = m.id
 JOIN venues AS v
 ON m.venue_id = v.id
 GROUP BY v.name
- 
-
+?
 -- Number of runs scored by each team specifically via match and innings
 SELECT teams.name AS country,
 (SELECT SUM(runs) FROM testruns
