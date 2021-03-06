@@ -21,3 +21,13 @@ WHERE dismissal = 'LBW'
 --Number of catches made by Ben Stokes
 SELECT * FROM testruns
 WHERE notes LIKE '%Ben Stokes%'
+
+
+-- Matches that were umpired by Marais Erasmus
+SELECT * FROM match
+JOIN umpires AS u1
+ON match.umpirea_id = u1.id
+JOIN umpires AS u2
+ON match.umpireb_id = u2.id
+WHERE u1.name = 'Marais Erasmus'
+OR u2.name = 'Marais Erasmus'
